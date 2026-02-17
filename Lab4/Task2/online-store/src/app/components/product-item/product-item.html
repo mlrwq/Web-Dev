@@ -1,0 +1,43 @@
+<div class="product-card">
+  <div class="product-card__gallery">
+    <div class="product-card__main-wrapper">
+      <img [src]="product.images[selectImgIdx] || 'assets/placeholder.png'" 
+           class="product-card__main-img" 
+           [alt]="product.name">
+    </div>
+
+    <div class="product-card__thumbnails" *ngIf="product.images.length > 1">
+      <img *ngFor="let img of product.images; let i = index" 
+           [src]="img" 
+           (click)="setMainImg(i)" 
+           class="product-card__thumb"
+           [class.product-card__thumb--active]="i === selectImgIdx"
+           [alt]="product.name + ' thumbnail ' + i">
+    </div>
+  </div>
+
+  <div class="product-card__info">
+    <h3 class="product-card__title" [title]="product.name">{{ product.name }}</h3>
+    <p class="product-card__description">{{ product.description }}</p>
+    
+    <div class="product-card__meta">
+      <span class="product-card__price">{{ product.price | number:'1.0-0' }} ₸</span>
+      <span class="product-card__rating">⭐ {{ product.rating }}</span>
+    </div>
+
+    <div class="product-card__actions">
+      <a [href]="product.link" target="_blank" class="product-card__buy-btn">
+        Купить на Kaspi
+      </a>
+      
+      <div class="product-card__share-group">
+        <button (click)="shareOnWhatsApp()" class="product-card__share-btn product-card__share-btn--wa">
+          WhatsApp
+        </button>
+        <button (click)="shareOnTelegram()" class="product-card__share-btn product-card__share-btn--tg">
+          Telegram
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
