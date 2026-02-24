@@ -1,0 +1,72 @@
+<div class="product-card">
+  <!-- Gallery -->
+  <div class="product-card__gallery">
+    <div class="product-card__main-wrapper">
+      <img
+        [src]="product.images[selectImgIdx] || 'assets/placeholder.png'"
+        class="product-card__main-img"
+        [alt]="product.name"
+      />
+    </div>
+    <div class="product-card__thumbnails" *ngIf="product.images.length > 1">
+      <img
+        *ngFor="let img of product.images; let i = index"
+        [src]="img"
+        (click)="setMainImg(i)"
+        class="product-card__thumb"
+        [class.product-card__thumb--active]="i === selectImgIdx"
+        [alt]="product.name + ' thumbnail ' + i"
+      />
+    </div>
+  </div>
+
+
+  <div class="product-card__info">
+    <h3 class="product-card__title" [title]="product.name">{{ product.name }}</h3>
+    <p class="product-card__description">{{ product.description }}</p>
+
+    <div class="product-card__meta">
+    <span class="product-card__price">{{ product.price | number:'1.0-0' }} ₸</span>
+    
+    <div class="product-rating" [attr.title]="product.rating">
+        <div class="stars-outer">
+        <div class="stars-inner" [style.width]="(product.rating / 5) * 100 + '%'"></div>
+        </div>
+        <span class="rating-number">{{ product.rating }}</span>
+    </div>
+    </div>
+
+    <div class="product-card__actions">
+      <a [href]="product.link" target="_blank" class="product-card__buy-btn">
+        Купить на Kaspi
+      </a>
+
+      <div class="product-card__action-row">
+        <!-- Like button -->
+        <button
+          class="product-card__like-btn"
+          [class.product-card__like-btn--liked]="liked"
+          (click)="onLike()"
+          [title]="'Нравится: ' + product.likes"
+        >
+          ❤ {{ product.likes }}
+        </button>
+
+        <!-- Delete button -->
+        <button class="product-card__delete-btn" (click)="onDelete()" title="Удалить товар">
+          🗑 Удалить
+        </button>
+      </div>
+
+      <!-- Share buttons -->
+      <div class="product-card__share-group">
+        <button (click)="shareOnWhatsApp()" class="product-card__share-btn">
+          WhatsApp
+        </button>
+        <button (click)="shareOnTelegram()" class="product-card__share-btn">
+          Telegram
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

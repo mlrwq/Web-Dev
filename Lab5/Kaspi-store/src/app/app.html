@@ -1,0 +1,36 @@
+<header class="header">
+  <div class="container">
+    <h1 class="header__title">Miras' <span>Kaspi</span> Store</h1>
+  </div>
+</header>
+
+<nav class="category-nav">
+  <div class="container">
+    <div class="category-nav__list">
+      <button
+        *ngFor="let cat of categories"
+        class="category-nav__btn"
+        [class.category-nav__btn--active]="selectedCategory?.id === cat.id"
+        (click)="selectCategory(cat)"
+      >
+        {{ cat.name }}
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main class="main-content">
+  <div class="container">
+    <div *ngIf="!selectedCategory" class="welcome">
+      <div class="welcome__icon">🛍️</div>
+      <h2 class="welcome__title">Добро пожаловать!</h2>
+      <p class="welcome__subtitle">Выберите категорию выше, чтобы увидеть товары.</p>
+    </div>
+
+    <app-product-list
+      *ngIf="selectedCategory"
+      [products]="displayedProducts"
+      (productDeleted)="onProductDeleted($event)"
+    ></app-product-list>
+  </div>
+</main>

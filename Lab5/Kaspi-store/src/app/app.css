@@ -1,0 +1,108 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, #1a1a1a 0%, #292828 100%);
+  color: white;
+  padding: 20px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header__title {
+  margin: 0;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: white;
+}
+
+.header__title span {
+  color: #f22222;
+}
+
+/* Category Nav */
+.category-nav {
+  background: #fff;
+  border-bottom: 2px solid #eee;
+  padding: 12px 0;
+  position: sticky;
+  top: 72px;
+  z-index: 999;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.category-nav__list {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.category-nav__btn {
+  padding: 10px 24px;
+  border: 2px solid #ddd;
+  border-radius: 30px;
+  background: #f5f5f5;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #444;
+}
+
+.category-nav__btn:hover {
+  border-color: #f22222;
+  color: #f22222;
+  background: #fff5f5;
+}
+
+.category-nav__btn--active {
+  background: #f22222;
+  border-color: #f22222;
+  color: #fff;
+}
+
+.category-nav__btn--active:hover {
+  background: #d41c1c;
+  border-color: #d41c1c;
+  color: #fff;
+}
+
+/* Main content */
+.main-content {
+  background-color: #f8f9fa;
+  padding: 40px 0;
+  min-height: calc(100vh - 140px);
+}
+
+/* Welcome screen */
+.welcome {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.welcome__icon {
+  font-size: 5rem;
+  margin-bottom: 20px;
+}
+
+.welcome__title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 12px;
+}
+
+.welcome__subtitle {
+  font-size: 1.1rem;
+  color: #777;
+  margin: 0;
+}

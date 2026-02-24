@@ -1,0 +1,12 @@
+<div *ngIf="products.length === 0" class="empty-state">
+  <span class="empty-state__icon">📭</span>
+  <p class="empty-state__text">В этой категории нет товаров.</p>
+</div>
+
+<div class="grid-container" *ngIf="products.length > 0">
+  <app-product-item
+    *ngFor="let p of products"
+    [product]="p"
+    (deleteProduct)="onDelete($event)"
+  ></app-product-item>
+</div>
